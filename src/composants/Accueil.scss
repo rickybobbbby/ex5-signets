@@ -1,0 +1,42 @@
+.Accueil {
+  margin: 50px auto;
+  text-align: center;
+  
+  .logo {
+    display: block;
+    height: 100px;
+    color: #925c04;
+    background: url(../images/signets-logo.png);
+    background-size: auto 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 250px;
+    margin-bottom: 100px;
+    font-weight: 300;
+    font-size: 2.4em;
+  }
+
+  .conteneur-boutons-connexion {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .btn-texte {
+      font-size: 0.9rem;
+      color: #555;
+      font-weight: 500;
+    }
+    
+    .btn-google {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5rem;
+      box-shadow: 3px 3px 10px 0px #888;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "signets",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.0",
+    "@mui/material": "^5.5.0",
+    "firebase": "^9.6.8",
+    "gh-pages": "^3.2.3",
+    "node-sass": "^7.0.1",
+    "react": "^17.0.2",
+    "react-color": "^2.19.3",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "preghdeploy": "npm run build",
+    "ghdeploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage-info": "Avant de déployer sur GitHub Pages vous devez configurer correctement la propriété homepage ci-dessous : 1) retirer le suffixe '-inactif' de l'étiquette, et 2) remplacer 'code-utilisateur' par le nom de votre compte GitHub et 'nom-de-depot-github' par le nom de votre dépôt GitHub dans la valeur de la propriété.",
+  "homepage-inactif": "https://582-4PA-H22.github.io/signets/"
+}
