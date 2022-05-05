@@ -44,18 +44,23 @@ export default function ListeDossiers({dossiers, setDossiers}) {
       ))
     );
   }
-
-  
-  return (
-    <ul className="ListeDossiers">
-      {
-        dossiers.map( 
-          // Remarquez l'utilisation du "spread operator" pour "étaler" les 
-          // propriétés de l'objet 'dossier' reçu en paramètre de la fonction
-          // fléchée dans les props du composant 'Dossier' !!
-          dossier =>  <li key={dossier.id}><Dossier {...dossier} supprimerDossier={supprimerDossier} modifierDossier={modifierDossier} /></li>
-        )
-      }
+    return (
+      (dossiers.length > 0) ?
+      <ul className="ListeDossiers">
+        {
+          dossiers.map( 
+            // Remarquez l'utilisation du "spread operator" pour "étaler" les 
+            // propriétés de l'objet 'dossier' reçu en paramètre de la fonction
+            // fléchée dans les props du composant 'Dossier' !!
+            dossier =>  <li key={dossier.id}><Dossier {...dossier} supprimerDossier={supprimerDossier} modifierDossier={modifierDossier} /></li>
+          )
+        }
+      </ul>
+      :
+      <ul className="ListeDossiers">
+      <div className="aucun-dossier">
+        Vous n'avez aucun dossier. Ajoutez des dossiers et collectionnez des signets !
+      </div>
     </ul>
-  );
+    );   
 }

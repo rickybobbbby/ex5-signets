@@ -11,5 +11,5 @@ import { updateDoc, doc } from "firebase/firestore";
 export async function creer(uid, idDossier, derniers3) {
     // Référence au document dans laquelle on veut ajouter le signet
     let docRef = doc(bdFirestore, 'signets', uid, 'dossiers', idDossier);
-    return await updateDoc(docRef, {top3: derniers3});
+    return await updateDoc(docRef, {top3: derniers3, nombreSignets: derniers3.length});
 }

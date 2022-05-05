@@ -4,4 +4,14 @@
   padding: 0.75rem 1.25rem;
   justify-content: center;
   flex-wrap: wrap;
+  .aucun-dossier {
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    height: 350px;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+  }
 }

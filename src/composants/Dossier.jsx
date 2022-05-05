@@ -12,6 +12,7 @@ import { useState, useContext } from 'react';
 import FrmDossier from './FrmDossier';
 import * as signetModele from '../code/signet-modele';
 import { UtilisateurContext } from './Appli';
+import Badge from '@mui/material/Badge';
 
 export default function Dossier({ id, titre, couleur, dateModif, couverture, top3, supprimerDossier, modifierDossier, ajouterSignet }) {
   // État de la carte active
@@ -61,6 +62,10 @@ export default function Dossier({ id, titre, couleur, dateModif, couverture, top
     gererFermerMenu(evt);
 
     // Arrêter le "bubbling" de l'événement
+    evt.stopPropagation();
+  }
+
+  function gererDeplacer(evt) {
     evt.stopPropagation();
   }
 
@@ -133,7 +138,7 @@ export default function Dossier({ id, titre, couleur, dateModif, couverture, top
     <article className={"Dossier" + (dropzone ? ' dropzone' : '') + (carteActive ? ' actif' : '')} onDrop={gererDrop} onDragEnter={gererDragEnter} onDragOver={gererDragOver} onDragLeave={gererDragLeave} style={{ backgroundColor: couleur }}>
       <div className="carte">
         <div className="endroit" onClick={() => setCarteActive(true)}>
-          <IconButton className="deplacer" aria-label="déplacer" disableRipple={true}>
+          <IconButton onClick={gererDeplacer} className="deplacer" aria-label="déplacer" disableRipple={true}>
             <SortIcon />
           </IconButton>
           <div className="couverture">
@@ -141,7 +146,9 @@ export default function Dossier({ id, titre, couleur, dateModif, couverture, top
           </div>
           <div className="info">
             <h2>{titre}</h2>
-            <p>Modifié : {formaterDate(dateModif.seconds)}</p>
+            <Badge badgeContent={signets.length} color="primary">
+              <p>Modifié : {formaterDate(dateModif.seconds)}</p>
+            </Badge>
           </div>
           <IconButton onClick={gererMenu} className="modifier" aria-label="modifier" size="small">
             <MoreVertIcon />
@@ -169,9 +176,14 @@ export default function Dossier({ id, titre, couleur, dateModif, couverture, top
             <CloseIcon />
           </ButtonUnstyled>
             {
+              (signets.length > 0) ?
               signets.map(
                 (signet, position) => <a key={position} href={signet.adresse} target="_blank">{signet.titre}</a>
               )
+              : 
+              <span className='aucun-signet'>
+                Ce dossier de signets est vide.
+              </span>
             }
         </div>
       </div>

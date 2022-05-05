@@ -8,7 +8,7 @@ import { getDocs, query, orderBy, collection, addDoc, Timestamp, getDoc, deleteD
  */
 export async function lireTout(idUtilisateur) {
     return getDocs(query(collection(bdFirestore, 'signets', idUtilisateur, 'dossiers'), 
-        orderBy("dateModif", "desc"), orderBy("titre", "asc"))).then(
+        orderBy("nombreSignets", "desc"))).then(
             res => res.docs.map(doc => ({id: doc.id, ...doc.data()}))
         );
 }
@@ -24,6 +24,7 @@ export async function creer(idUtilisateur, dossier) {
     // Remarquez que nous utilisons l'objet Timestamp de Firestore pour obtenir
     // un objet date contenant le temps au serveur...
     dossier.dateModif = Timestamp.now();
+    dossier.nombreSignets = 0;
     // Référence à la collection dans laquelle on veut ajouter le dossier
     let coll = collection(bdFirestore, 'signets', idUtilisateur, 'dossiers');
     // Ajout du dossier avec addDoc : retourne une promesse contenant une 
